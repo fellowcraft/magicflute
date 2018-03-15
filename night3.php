@@ -35,7 +35,7 @@ irel            = p7
 ipanStart       = p8
 ipanEnd         = p9
 iskiptime       = p10
-irevSend        = p11/1000
+irevSend        = p11/100
 
 kpan    linseg  ipanStart, idur, ipanEnd
 aAmpEnv linseg 0, iat,  iamp, irel, 0
@@ -52,8 +52,8 @@ garight   =         garight +  aIn * (1 - kpan) * irevSend
 endin
 
 instr 99                           ; global reverb ----------------------------
-aleft,  aleft  reverbsc  galeft,  galeft, 0.9, 12000, sr, 0.8, 1 
-aright, aright reverbsc  garight, garight,0.9, 12000, sr, 0.8, 1 
+aleft,  aleft  reverbsc  galeft,  galeft, 0.9, 18000, sr, 0.8, 1 
+aright, aright reverbsc  garight, garight,0.9, 18000, sr, 0.8, 1 
 outs   aright,   aleft              
 galeft    =    0
 garight   =    0 
@@ -62,9 +62,9 @@ endin
 // --------------------- init vars ---------------------------------------------
 $tailT   = 4;
 $startT  = 60*0;
-$endT    = 60*3+11-$tailT;
+$endT    = 60*60-$tailT;
 $TT      = $endT - $startT;
-$Events  = intval($TT*3);         // events  per second
+$Events  = intval($TT*1);         // events  per second
 // --------------------------- sco head ----------------------------------------
 $scoreHeader =  '; Reverb
 i99     0   '.($TT+$tailT).'   
@@ -93,17 +93,17 @@ return $TDur;
 }
 
 function iamp() {
-return stats_rand_gen_iuniform(-60,3);
+return stats_rand_gen_iuniform(-36,6);
 // return -1;
 }
 
 function ifreq() {
 
-if(rand(0,1)) { return 1; } else { return 0.9; } 
+// if(rand(0,1)) { return 1; } else { return 0.9; } 
 
 //return round(stats_rand_gen_funiform(.5,1.5),3); 
 
-//return 1;
+return 1;
 }
 
 $rndat = 1;
@@ -136,7 +136,7 @@ return round(stats_rand_gen_funiform(0,1),2);
 function iskiptime() {
 Global $startT;
 Global $endT;
-return round(stats_rand_gen_funiform($startT,$endT),3); 
+return round(stats_rand_gen_funiform(1,190),3); 
 }
 
 function irevSend() {
