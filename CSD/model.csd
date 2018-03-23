@@ -10,15 +10,15 @@ galeft  init 0
 garight init 0
 
 instr 1
-idur            = p3
-iamp            = ampdb(p4)
+idur            = p3*2
+iamp            = ampdb(p4)*4
 ifreq           = p5   ;  1x - negative backwards 
 iat             = p6
 irel            = p7
 ipanStart       = p8
 ipanEnd         = p9
 iskiptime       = p10
-irevSend        = p11
+irevSend        = p11*2
 
 kpan    linseg  ipanStart, idur, ipanEnd
 aAmpEnv linseg 0, iat,  iamp, irel, 0
