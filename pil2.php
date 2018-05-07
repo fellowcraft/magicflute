@@ -33,7 +33,7 @@ irevSend        = p11/20
 kpan    linseg  ipanStart, idur, ipanEnd
 aAmpEnv linseg 0, iat,  iamp, irel, 0
 
-aIn  diskin2 "../WAV/night.wav", ifreq, iskiptime, 1
+aIn  diskin2 "../WAV/sonna.wav", ifreq, iskiptime, 1
 
 aLeft  = aIn * kpan       * aAmpEnv
 aRight = aIn * (1 - kpan) * aAmpEnv 
@@ -55,9 +55,9 @@ endin
 // --------------------- init vars ---------------------------------------------
 $tailT   = 4;
 $startT  = 60*0;
-$endT    = 60*8+18;
+$endT    = 60*20;
 $TT      = $endT - $startT;
-$Events  = intval($TT*1);         // events  per second
+$Events  = intval($TT*5);         // events  per second
 // --------------------------- sco head ----------------------------------------
 $scoreHeader =  '; Reverb
 i99     0   '.($TT+$tailT).'   
@@ -80,13 +80,13 @@ function idur() {
 Global $TDur;
 //$TDur = round(14.4-stats_rand_gen_beta(5,1)*14,1);
 
-$TDur = round(stats_rand_gen_funiform(0.1,4),1); 
+$TDur = round(stats_rand_gen_funiform(0.1,10.8),1); 
 
 return $TDur;
 }
 
 function iamp() {
-return stats_rand_gen_iuniform(-42,2);
+return stats_rand_gen_iuniform(-40,4);
 // return -1;
 }
 
@@ -94,7 +94,7 @@ function ifreq() {
 
 // if(rand(0,1)) { return 1; } else { return 0.9; } 
 
-return round(stats_rand_gen_funiform(.98,1.01),3); 
+return round(stats_rand_gen_funiform(.98,1.02),3); 
 
 // return 1;
 }
@@ -129,7 +129,7 @@ return round(stats_rand_gen_funiform(0,1),2);
 function iskiptime() {
 Global $startT;
 Global $endT;
-return round(stats_rand_gen_funiform(1,190),3); 
+return round(stats_rand_gen_funiform(1,8*60+40),3); 
 }
 
 function irevSend() {

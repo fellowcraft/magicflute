@@ -28,7 +28,7 @@ irel            = p7
 ipanStart       = p8
 ipanEnd         = p9
 iskiptime       = p10
-irevSend        = p11/50
+irevSend        = p11/20
 
 kpan    linseg  ipanStart, idur, ipanEnd
 aAmpEnv linseg 0, iat,  iamp, irel, 0
@@ -57,7 +57,7 @@ $tailT   = 4;
 $startT  = 60*0;
 $endT    = 60*20;
 $TT      = $endT - $startT;
-$Events  = intval($TT*33);         // events  per second
+$Events  = intval($TT*5);         // events  per second
 // --------------------------- sco head ----------------------------------------
 $scoreHeader =  '; Reverb
 i99     0   '.($TT+$tailT).'   
@@ -86,7 +86,7 @@ return $TDur;
 }
 
 function iamp() {
-return stats_rand_gen_iuniform(-40,4);
+return stats_rand_gen_iuniform(-38,6);
 // return -1;
 }
 
