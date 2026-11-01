@@ -1,7 +1,7 @@
 # magicflute
 
 "Callas in Paris" (Psycho-Stochastic in PHP7 / Csound6)  
-http://rothkamm.com/?Callas+in+Paris  
+https://rothkamm.com/album?Callas+in+Paris  
   
 Based on Maria Callas arias:
   
